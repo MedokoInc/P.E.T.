@@ -1,0 +1,19 @@
+{
+    "name": "medoko/petlocator",
+    "description": "A QR code generator for locating the owners of lost pets",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Medoko\\Petlocator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elizaveta Mokshantseva",
+            "email": "8081@htl.rennweg.at"
+        }
+    ],
+    "require": {
+        "endroid/qr-code": "^4.4"
+    }
+}
