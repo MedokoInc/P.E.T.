@@ -20,7 +20,7 @@ class Owner
 
 
     public function __toString(){
-        return $this->getName(). ' (' .$this->getNumber(). ')';
+        return $this->getNumber();
     }
 
     /**
