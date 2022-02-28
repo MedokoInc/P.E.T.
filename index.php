@@ -1,34 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet your Cat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+</head>
+<body>
 <?php
-
 require('vendor/autoload.php');
 
 use Medoko\Petlocator\Owner;
 
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
-use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
-use Endroid\QrCode\Label\Font\NotoSans;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
-
-$myOwner= new Owner('MOK', '+43 1 22 33 444');
-
-$result = Builder::create()
-    ->writer(new PngWriter())
-    ->writerOptions([])
-    ->data($myOwner)
-    ->encoding(new Encoding('UTF-8'))
-    ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-    ->size(300)
-    ->margin(10)
-    ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    // ->logoPath(__DIR__.'/assets/symfony.png')
-    ->labelText('This is the label')
-    ->labelFont(new NotoSans(20))
-    ->labelAlignment(new LabelAlignmentCenter())
-    ->build();
-
-// Directly output the QR code
-header('Content-Type: '.$result->getMimeType());
-echo $result->getString();
+?>
+<form action="qrCode.php" method="get">
+    Name: <input type="text" name="name">
+    <br>
+    Number: <input type="tel" name="number">
+    <br>
+    <input type="submit" value="Open Form">
+</form>
+</body>
+</html>
