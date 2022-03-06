@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require('vendor/autoload.php');
 
@@ -12,7 +13,7 @@ use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
-$myOwner= new Owner($_GET['name'], $_GET['number']);
+$myOwner= new Owner($_SESSION['name'], $_SESSION['number']);
 
 $result = Builder::create()
     ->writer(new PngWriter())
@@ -23,8 +24,9 @@ $result = Builder::create()
     ->size(300)
     ->margin(10)
     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    // ->logoPath(__DIR__.'/assets/symfony.png')
-    ->labelText($_GET['name'])
+    ->logoPath($_SESSION['imagePath'])
+    ->logoResizeToHeight(50)
+    ->labelText($_SESSION['name'])
     ->labelFont(new NotoSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->build();

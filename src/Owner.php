@@ -38,5 +38,4 @@ class Owner
     {
         return $this->number;
     }
-
 }
