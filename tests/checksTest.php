@@ -28,7 +28,7 @@ class checksTest extends TestCase
             checks::isValidTel("06606611766")
         );
 
-        $this->assertTrue(
+        $this->assertFalse(
             checks::isValidTel("thiswillfail")
         );
     }

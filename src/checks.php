@@ -4,14 +4,14 @@ namespace Medoko\Petlocator;
 
 class checks
 {
-    static function isValidTel(mixed $number): bool|int
+    static function isValidTel($number): bool
     {
-        return preg_match('/^+?[0-9]+$/', $number);
+        return preg_match('/^\+?[0-9]+$/', $number);
     }
 
-    static function isValidName(mixed $number): bool|int
+    static function isValidName($name): bool
     {
-        return preg_match('/^[a-zA-Z\s]+$/', $number);
+        return preg_match('/^[a-zA-Z\s]+$/', $name);
     }
 }
 

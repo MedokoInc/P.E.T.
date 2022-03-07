@@ -1,0 +1,29 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0"
+ srcLang="de-AT" trgLang="en-US">
+	<file id="f1">
+		<unit id="1">
+			<segment>
+                		<source>Dein Name</source>
+                		<target>Your Name</target>
+            		</segment>
+		</unit>
+		<unit id="2">
+			<segment>
+                		<source>Telefonnummer</source>
+                		<target>telephone number</target>
+            		</segment>
+		</unit>
+		<unit id="3">
+			<segment>
+                		<source>alles gut wir rufen dich nicht an</source>
+                		<target>all good we won't call u</target>
+            		</segment>
+		</unit>
+		<unit id="4">
+			<segment>
+                		<source>Bild</source>
+                		<target>Picture</target>
+            		</segment>
+		</unit>
+	</file>
+</xliff>
