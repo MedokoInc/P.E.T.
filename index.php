@@ -35,8 +35,8 @@ if (isset($_POST["name"])) {
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
             $_SESSION['imagePath'] = $uploadfile;
-            header("Location: qrcode.php");
         }
+        header("Location: qrcode.php");
     } else {
         $errorsString = implode("\n", $errors);
     }
@@ -69,7 +69,7 @@ if (isset($_POST["name"])) {
             ?>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Bild</label>
+            <label for="exampleInputPassword1">Bild (optional)</label>
             <input type="file" name="image" class="form-control" placeholder="Deine Telefonnummer">
         </div>
         <button type="submit" value="submit" class="btn btn-primary mt-4">Submit</button>

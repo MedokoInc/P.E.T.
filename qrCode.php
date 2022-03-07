@@ -13,9 +13,10 @@ use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
-$myOwner= new Owner($_SESSION['name'], $_SESSION['number']);
+$myOwner = new Owner($_SESSION['name'], $_SESSION['number']);
 
-$result = Builder::create()
+$builder = Builder::create();
+$builder
     ->writer(new PngWriter())
     ->writerOptions([])
     ->data($myOwner)
@@ -24,13 +25,18 @@ $result = Builder::create()
     ->size(300)
     ->margin(10)
     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    ->logoPath($_SESSION['imagePath'])
-    ->logoResizeToHeight(50)
     ->labelText($_SESSION['name'])
     ->labelFont(new NotoSans(20))
-    ->labelAlignment(new LabelAlignmentCenter())
-    ->build();
+    ->labelAlignment(new LabelAlignmentCenter());
 
+if (isset($_SESSION['imagePath'])) {
+    $builder->logoPath($_SESSION['imagePath'])
+        ->logoResizeToHeight(50);
+}
+
+$result = $builder->build();
 // Directly output the QR code
-header('Content-Type: '.$result->getMimeType());
+header('Content-Type: ' . $result->getMimeType());
 echo $result->getString();
+unlink($_SESSION['imagePath']);
+session_unset();
